@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Footer from "@/containers/Footer";
+import Navbar from "@/containers/Navbar";
+import Container from "@/containers/Container";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -21,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        {children}
+        <Navbar />
+        <Container>{children}</Container>
         <Footer />
       </body>
     </html>
