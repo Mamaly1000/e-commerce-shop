@@ -7,6 +7,10 @@ export interface Product {
   size: Size;
   color: Color;
   images: Image[];
+  storeId: string;
+  categoryId: string;
+  sizeId: string;
+  colorId: string;
 }
 
 export interface Image {
@@ -17,7 +21,7 @@ export interface Image {
 export interface Billboard {
   id: string;
   label: string;
-  imageUrl: string;
+  poster: string;
 }
 
 export interface Category {

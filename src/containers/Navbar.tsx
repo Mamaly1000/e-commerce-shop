@@ -1,11 +1,10 @@
 import React from "react";
 import Container from "./Container";
 import Link from "next/link";
-import MainNav from "./MainNav";
-import getCategories from "@/actions/get-categories";
 import NavbarActions from "./NavbarActions";
-export const revalidate = 0;
-const Navbar = async () => {
+import { getCategories } from "@/actions/get-categories.server";
+import MainNav from "./MainNav";
+export default async function Navbar() {
   const categories = await getCategories();
   return (
     <div className="border-b">
@@ -14,12 +13,10 @@ const Navbar = async () => {
           <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
             <p className="font-bold text-xl">STORE</p>
           </Link>
-          <MainNav data={categories} />
+          <MainNav data={categories as any} />
           <NavbarActions />
         </div>
       </Container>
     </div>
   );
-};
-
-export default Navbar;
+}
