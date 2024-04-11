@@ -1,4 +1,5 @@
 "use client";
+import PreviewModal from "@/components/modal/PreviewModal";
 import React, { useEffect, useState } from "react";
 
 const ModalProviders = () => {
@@ -10,7 +11,11 @@ const ModalProviders = () => {
   if (!isClient) {
     return null;
   }
-  return <></>;
+  return (
+    <>
+      <PreviewModal />
+    </>
+  );
 };
 
 export default ModalProviders;
