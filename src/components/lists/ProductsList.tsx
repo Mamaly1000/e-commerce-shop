@@ -9,9 +9,15 @@ interface props {
   title?: string;
   className?: string;
   products?: Product[];
+  containerClassName?: string;
 }
 
-const ProductsList: FC<props> = ({ className, products = [], title }) => {
+const ProductsList: FC<props> = ({
+  className,
+  products = [],
+  title,
+  containerClassName,
+}) => {
   return (
     <section className={cn(`space-y-4`, className)}>
       <h3 className="font-bold text-3xl">{title}</h3>
@@ -21,7 +27,12 @@ const ProductsList: FC<props> = ({ className, products = [], title }) => {
         description="looks like there is no products here."
       />
       {products.length > 0 && (
-        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <section
+          className={cn(
+            "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4",
+            containerClassName
+          )}
+        >
           {products.map((p, i) => (
             <ProductCard key={p.id} data={p} index={i} />
           ))}

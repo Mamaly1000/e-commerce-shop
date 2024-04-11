@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/containers/Footer";
 import Navbar from "@/containers/Navbar";
 import Container from "@/containers/Container";
+import ToastProvider from "@/providers/ToastProvider";
+import ModalProviders from "@/providers/ModalProviders";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -26,6 +28,8 @@ export default async function RootLayout({
         <Navbar />
         <Container>{children}</Container>
         <Footer />
+        <ToastProvider />
+        <ModalProviders />
       </body>
     </html>
   );
