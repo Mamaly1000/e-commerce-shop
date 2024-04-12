@@ -26,6 +26,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <Navbar />
+
         <Container>{children}</Container>
         <Footer />
         <ToastProvider />
