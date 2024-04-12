@@ -1,42 +1,53 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Currency from "./Currency";
 import Button from "./Button";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useCheckout } from "@/hooks/use-checkout";
 
 const Summary = () => {
   const searchParams = useSearchParams();
+  const [isLoading, setLoading] = useState(false);
   const cart = useCart();
+  const router = useRouter();
   const removeAll = cart.removeAll;
   const totalPrice = cart.items.reduce((acc, current) => {
     return (acc += Number(current.price));
   }, 0);
-
+  const { onOpen } = useCheckout();
   const onCheckout = async () => {
     try {
+      setLoading(true);
       await axios
         .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
           productIds: cart.items.map((i) => i.id),
+          status: "PENDING",
         })
         .then((res) => {
-          window.location = res.data.url;
+          toast.info(res.data.message);
+          router.push(res.data.url);
+          onOpen(res.data.orderId);
         });
     } catch (error) {
       console.log(error);
       toast.error("something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (searchParams.get("success")) {
+    if (searchParams.get("COMPLETED")) {
       toast.success("Payment completed!");
+      router.push("/cart");
       removeAll();
     }
-    if (searchParams.get("canceled")) {
+    if (searchParams.get("CANCELED")) {
       toast.success("something went wrong!");
+      router.push("/cart");
     }
   }, [removeAll, searchParams]);
 
@@ -49,7 +60,11 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button onClick={onCheckout} className="w-full mt-6">
+      <Button
+        disabled={isLoading || cart.items.length === 0}
+        onClick={onCheckout}
+        className="w-full mt-6"
+      >
         Checkout
       </Button>
     </section>
