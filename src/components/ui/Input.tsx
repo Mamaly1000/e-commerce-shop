@@ -70,9 +70,9 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
         >
           {label}
         </label>
-        {errors[id] && (
+        {errors && errors[id] && (
           <p className="text-[12px] text-red-500 min-w-full max-w-full">
-            {errors[id].message?.toString() as string}
+            {errors![id]?.message?.toString() as string}
           </p>
         )}
       </div>
