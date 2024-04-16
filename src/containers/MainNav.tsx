@@ -1,4 +1,5 @@
 "use client";
+import DropDown from "@/components/ui/DropDown";
 import { cn } from "@/libs/utils";
 import { Category } from "@/types/Types";
 import Link from "next/link";
@@ -19,19 +20,21 @@ const MainNav: FC<props> = ({ data = [] }) => {
   }));
 
   return (
-    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            "text-sm font-medium transition-colors hover:text-black capitalize",
-            route.active ? "text-black" : "text-neutral-500"
-          )}
-        >
-          {route.label}
-        </Link>
-      ))}
+    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 relative z-10">
+      {routes.length <= 3 &&
+        routes.map((route) => (
+          <Link
+            key={route.href}
+            href={route.href}
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-black capitalize",
+              route.active ? "text-black" : "text-neutral-500"
+            )}
+          >
+            {route.label}
+          </Link>
+        ))}
+      {routes.length > 3 && <DropDown routes={routes} />}
     </nav>
   );
 };

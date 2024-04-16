@@ -41,12 +41,10 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get("COMPLETED")) {
-      toast.success("Payment completed!");
       router.push("/cart");
       removeAll();
     }
     if (searchParams.get("CANCELED")) {
-      toast.success("something went wrong!");
       router.push("/cart");
     }
   }, [removeAll, searchParams]);

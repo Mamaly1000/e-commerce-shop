@@ -13,6 +13,10 @@ export interface Product {
   colorId: string;
 }
 
+export interface Store {
+  name: string;
+}
+
 export interface Image {
   id: string;
   url: string;
