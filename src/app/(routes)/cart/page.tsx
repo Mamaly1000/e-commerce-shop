@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 const CartPage = () => {
   const cart = useCart();
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-[#121212]">
       <Container>
         <div className="px-4 py-16 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-black capitalize">

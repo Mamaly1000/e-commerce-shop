@@ -28,7 +28,7 @@ const CategoryPage = async ({
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
   return (
-    <section className="bg-white">
+    <section className="bg-white dark:bg-[#121212]">
       <Container>
         <Billboard billboard={category.billboard} />
         <div className="px-4 sm:px-6 lg:px-8 pb-24 ">

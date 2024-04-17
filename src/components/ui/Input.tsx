@@ -46,11 +46,11 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
           {...register(id)}
           placeholder=" "
           className={twMerge(
-            " peer w-full bg-white text-black p-4 pt-6 font-light border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ",
+            " peer w-full bg-white dark:bg-[#121212] text-black p-4 pt-6 font-light border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ",
             formatPrice ? "pl-9" : "pl-4",
             errors[id]
-              ? "border-gray-500 focus:border-gray-500"
-              : "hover:border-gray-500 focus:border-gray-500"
+              ? "border-gray-500 dark:border-gray-700500 focus:border-gray-500 dark:border-gray-700500"
+              : "hover:border-gray-500 dark:border-gray-700500 focus:border-gray-500 dark:border-gray-700500"
           )}
           type={type}
           min={min}
