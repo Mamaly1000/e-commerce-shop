@@ -49,8 +49,9 @@ const Filter = ({
           <div key={d.id} className="flex items-center">
             <Button
               className={cn(
-                "rounded-md text-sm text-gray-800 p-2 bg-white dark:bg-[#121212] border border-gray-500 dark:border-gray-700300 ",
-                selectedValue === d.id && "bg-[#121212] text-white"
+                "rounded-md text-sm text-gray-800 dark:text-gray-400 p-2 bg-white dark:bg-[#121212] border border-gray-500 dark:border-gray-700  ",
+                selectedValue === d.id &&
+                  "bg-[#121212] dark:bg-white text-white dark:text-gray-900"
               )}
               onClick={() => onClick(d.id)}
             >

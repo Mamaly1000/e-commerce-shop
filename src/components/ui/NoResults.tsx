@@ -13,8 +13,13 @@ const NoResults = ({
   return (
     !!show && (
       <section className="flex items-center justify-center h-full w-full  flex-col">
-        <h4 className="text-lg capitalize text-neutral-700">{title}</h4>
-        <h4 className="text-sm capitalize text-neutral-500">{description}</h4>
+        <h4 className="text-lg capitalize text-neutral-700 dark:text-neutral-200">
+          {title}
+        </h4>
+        <h4 className="text-sm capitalize text-neutral-500 dark:text-neutral-400">
+          {" "}
+          {description}
+        </h4>
       </section>
     )
   );

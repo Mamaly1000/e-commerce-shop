@@ -6,6 +6,7 @@ import Container from "@/containers/Container";
 import { Product } from "@/types/Types";
 import React from "react";
 
+export const revalidate = 0;
 const SingleProductPage = async ({
   params,
 }: {
@@ -15,7 +16,7 @@ const SingleProductPage = async ({
     id: params.productId,
   })) as Product;
   const suggestedProducts = (await getProducts({
-    categoryId: "1a474e37-20e9-4098-be2b-1fa1e27febc8",
+    categoryId: product?.categoryId,
   })) as Product[];
 
   return (
@@ -29,9 +30,11 @@ const SingleProductPage = async ({
             </div>
           </div>
           <hr className="my-10" />
-          <ProductsList products={suggestedProducts} title="related products" />
+          <ProductsList
+            products={suggestedProducts.filter((p) => p.id !== product.id)}
+            title="related products"
+          />
         </div>
-        {product?.name}
       </Container>
     </section>
   );

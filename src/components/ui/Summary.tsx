@@ -50,18 +50,22 @@ const Summary = () => {
   }, [removeAll, searchParams]);
 
   return (
-    <section className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:m-0 lg:p-8">
-      <h2 className="text-lg font-medium text-gray-900">Order Summary</h2>
+    <section className="mt-16 rounded-lg bg-gray-50 dark:bg-black px-4 py-6 sm:p-6 lg:col-span-5 lg:m-0 lg:p-8">
+      <h2 className="text-lg font-medium text-gray-900 dark:text-white">
+        Order Summary
+      </h2>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-500 dark:border-gray-700200 pt-4">
-          <div className="text-base font-medium text-gray-900">Order total</div>
+          <div className="text-base font-medium text-gray-900 dark:text-white">
+            Order total
+          </div>
           <Currency value={totalPrice} />
         </div>
       </div>
       <Button
         disabled={isLoading || cart.items.length === 0}
         onClick={onCheckout}
-        className="w-full mt-6"
+        className="w-full mt-6 bg-black dark:bg-white text-white dark:text-black"
       >
         Checkout
       </Button>

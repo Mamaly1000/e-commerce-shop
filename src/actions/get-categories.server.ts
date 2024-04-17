@@ -4,10 +4,7 @@ import { Category } from "@/types/Types";
 const categoriesURL = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
 
 export async function getCategories() {
-  const headers = new Headers();
-  headers.append("Cache-Control", "no-store");
-
-  const res = await fetch(categoriesURL, { headers });
+  const res = await fetch(categoriesURL, { cache: "no-cache" });
 
   if (!res.ok) {
     return [];

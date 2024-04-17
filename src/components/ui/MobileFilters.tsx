@@ -20,7 +20,10 @@ const MobileFilters = ({
 
   return (
     <>
-      <Button onClick={onOpen} className="lg:hidden flex items-center gap-2">
+      <Button
+        onClick={onOpen}
+        className="lg:hidden flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black"
+      >
         Filters <Plus size={20} />
       </Button>
       <Dialog

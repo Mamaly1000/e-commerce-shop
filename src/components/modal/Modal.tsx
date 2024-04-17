@@ -14,7 +14,7 @@ const Modal: FC<ModalProps> = ({ children, onClose, open }) => {
   return (
     <Transition show={open} appear as={Fragment}>
       <Dialog className="relative z-10" open={open} onClose={onClose}>
-        <div className="fixed inset-0 bg-[#121212] bg-opacity-50" />
+        <div className="fixed inset-0  bg-[#121212] bg-opacity-50" />
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
