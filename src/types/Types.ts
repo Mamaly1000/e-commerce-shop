@@ -12,6 +12,15 @@ export interface Product {
   sizeId: string;
   colorId: string;
 }
+export interface store_with_analytic {
+  name: string;
+  description: string;
+  background_Image: string;
+  logo: string;
+  total_revenue: number;
+  total_sell_products: number;
+  id: string;
+}
 
 export interface Store {
   name: string;

@@ -1,6 +1,6 @@
 "use client";
 import { Menu, Transition } from "@headlessui/react";
-import { BoxSelect, ChevronDownIcon, CircleEllipsis } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { Fragment } from "react";
 
@@ -18,7 +18,7 @@ const DropDown = ({
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 bg-opacity-100 dark:bg-opacity-90 bg-[#121212] text-white dark:bg-white dark:text-black">
+        <Menu.Button className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 bg-opacity-100 dark:bg-opacity-90 bg-[#121212] text-white dark:bg-white dark:text-black capitalize">
           {activeRoute ? activeRoute.label : routes[0]?.label}
           <ChevronDownIcon
             className="-mr-1 ml-2 h-5 w-5  "

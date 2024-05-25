@@ -3,7 +3,7 @@ import DropDown from "@/components/ui/DropDown";
 import { cn } from "@/libs/utils";
 import { Category } from "@/types/Types";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React, { FC } from "react";
 
 interface props {
@@ -12,9 +12,9 @@ interface props {
 
 const MainNav: FC<props> = ({ data = [] }) => {
   const pathname = usePathname();
-
+  const params = useParams();
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `/store/${params?.storeId}/category/${route.id}`,
     label: route.name,
     active: pathname === `/category/${route.id}`,
   }));

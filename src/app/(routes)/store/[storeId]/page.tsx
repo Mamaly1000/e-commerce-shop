@@ -1,36 +1,44 @@
-import { getCategory } from "@/actions/get-category.server";
+import getBillboards from "@/actions/get-billboards.server";
+import { getCategories } from "@/actions/get-categories.server";
 import { getColors } from "@/actions/get-colors.server";
 import { getProducts } from "@/actions/get-products.server";
 import { getSizes } from "@/actions/get-sizes.server";
+import { getStoreById } from "@/actions/get-store.server";
 import Billboard from "@/components/billboard/Billboard";
 import ProductsList from "@/components/lists/ProductsList";
 import Filter from "@/components/ui/Filter";
+import HeroSection from "@/components/ui/HeroSection";
 import MobileFilters from "@/components/ui/MobileFilters";
 import Container from "@/containers/Container";
 import { Product } from "@/types/Types";
-import React from "react";
-export const revalidate = 0;
-const CategoryPage = async ({
-  params,
+
+const StorePage = async ({
   searchParams,
+  params,
 }: {
+  params: { storeId: string };
   searchParams: {
     colorId?: string;
     sizeId?: string;
   };
-  params: { categoryId: string };
 }) => {
+  const store = await getStoreById(params.storeId);
   const products = (await getProducts({
-    categoryId: params.categoryId,
     ...searchParams,
+    isFeatured: true,
+    storeId: params.storeId,
   })) as Product[];
-  const sizes = await getSizes();
-  const colors = await getColors();
-  const category = await getCategory(params.categoryId);
+  const billboards = await getBillboards({
+    storeId: params.storeId,
+  });
+  const categories = await getCategories({ storeId: params.storeId });
+  const sizes = await getSizes({ storeId: params.storeId });
+  const colors = await getColors({ storeId: params.storeId });
   return (
-    <section className="bg-white dark:bg-[#121212]">
-      <Container>
-        <Billboard billboard={category.billboard} />
+    <Container categories={categories} store={store as any}>
+      <div className="space-y-10 pb-10">
+        <HeroSection stores={store ? [store] : []} />
+        <Billboard billboards={billboards} />
         <div className="px-4 sm:px-6 lg:px-8 pb-24 ">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters sizes={sizes} colors={colors} />
@@ -47,9 +55,8 @@ const CategoryPage = async ({
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Container>
   );
 };
-
-export default CategoryPage;
+export default StorePage;

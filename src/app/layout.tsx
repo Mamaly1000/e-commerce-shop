@@ -37,7 +37,7 @@ export default async function RootLayout({
           <Footer />
           <ToastProvider />
           <ModalProviders />
-        </ThemeProvider>{" "}
+        </ThemeProvider>
       </body>
     </html>
   );

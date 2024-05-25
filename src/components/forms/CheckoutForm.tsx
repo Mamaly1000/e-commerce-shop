@@ -11,7 +11,7 @@ import Button from "../ui/Button";
 import { DollarSignIcon, List } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 const formSchema = z.object({
   phone: z.string().min(11).max(11),
@@ -30,6 +30,7 @@ type formvalue = z.infer<typeof formSchema>;
 
 const CheckoutForm = () => {
   const router = useRouter();
+  const params = useParams();
 
   const [isLoading, setLoading] = useState(false);
 
@@ -62,12 +63,15 @@ const CheckoutForm = () => {
     try {
       setLoading(true);
       await axios
-        .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-          status: "COMPLETED",
-          orderId,
-          address,
-          phone: vals.phone,
-        })
+        .post(
+          `${process.env.NEXT_PUBLIC_API_URL}/${params?.storeId}/checkout`,
+          {
+            status: "COMPLETED",
+            orderId,
+            address,
+            phone: vals.phone,
+          }
+        )
         .then((res) => {
           toast.success(res.data.message);
           router.push(res.data.url);
@@ -84,10 +88,13 @@ const CheckoutForm = () => {
     try {
       setLoading(true);
       await axios
-        .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-          status: "CANCELED",
-          orderId,
-        })
+        .post(
+          `${process.env.NEXT_PUBLIC_API_URL}/${params?.storeId}/checkout`,
+          {
+            status: "CANCELED",
+            orderId,
+          }
+        )
         .then((res) => {
           toast.info(res.data.message);
           router.push(res.data.url);

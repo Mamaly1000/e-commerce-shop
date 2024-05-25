@@ -1,9 +1,11 @@
 "use server";
 
-import { Store } from "@/types/Types";
+import { Store, store_with_analytic } from "@/types/Types";
 
-export const getStoreById = async (): Promise<Store | null> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
+export const getStoreById = async (
+  id?: string
+): Promise<store_with_analytic | null> => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL + `/${id}`}`, {
     cache: "no-cache",
   });
 

@@ -1,9 +1,12 @@
 "use server";
 import { Size } from "@/types/Types";
 
-const sizesUrl = `${process.env.NEXT_PUBLIC_API_URL}/sizes`;
-
-export async function getSizes(): Promise<Size[]> {
+export async function getSizes({
+  storeId,
+}: {
+  storeId: String;
+}): Promise<Size[]> {
+  const sizesUrl = `${process.env.NEXT_PUBLIC_API_URL}/${storeId}/sizes`;
   const headers = new Headers();
   headers.append("Cache-Control", "no-store");
 

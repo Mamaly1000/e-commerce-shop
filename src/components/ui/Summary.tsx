@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Currency from "./Currency";
 import Button from "./Button";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -13,6 +13,7 @@ const Summary = () => {
   const [isLoading, setLoading] = useState(false);
   const cart = useCart();
   const router = useRouter();
+  const params = useParams();
   const removeAll = cart.removeAll;
   const totalPrice = cart.items.reduce((acc, current) => {
     return (acc += Number(current.price));
@@ -22,10 +23,13 @@ const Summary = () => {
     try {
       setLoading(true);
       await axios
-        .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-          productIds: cart.items.map((i) => i.id),
-          status: "PENDING",
-        })
+        .post(
+          `${process.env.NEXT_PUBLIC_API_URL}/${params?.storeId}/checkout`,
+          {
+            productIds: cart.items.map((i) => i.id),
+            status: "PENDING",
+          }
+        )
         .then((res) => {
           toast.info(res.data.message);
           router.push(res.data.url);
