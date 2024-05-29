@@ -45,11 +45,11 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get("COMPLETED")) {
-      router.push("/cart");
+      router.push(`/store/${params?.storeId}/cart`);
       removeAll();
     }
     if (searchParams.get("CANCELED")) {
-      router.push("/cart");
+      router.push(`/store/${params?.storeId}/cart`);
     }
   }, [removeAll, searchParams]);
 
