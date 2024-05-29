@@ -15,11 +15,11 @@ const HomePage = async ({}: {
 
   return (
     <Container>
-      <div className="space-y-10 pb-10">
+      <div className="space-y-10 pb-10 max-w-full p-2 lg:p-0">
         <HeroSection stores={stores} />
-        <hr className="w-full border-gray-700 border-[1px]" />
+        <hr className="max-w-full mx-auto border-gray-700 border-[1px]" />
         <MarketList
-          className="bg-inherit relative z-10 p-2 md:p-0"
+          className="bg-inherit relative z-10 p-2 lg:p-0"
           title="featured markets"
           markets={stores}
         />

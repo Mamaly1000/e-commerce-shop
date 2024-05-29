@@ -20,7 +20,7 @@ const MarketCard = ({
       href={`/store/${market.id}`}
       className={cn(`min-h-[350px] max-h-[350px]
        bg-white dark:bg-black
-        hover:bg-gray-100/10 dark:hover:bg-gray-700/10
+        hover:bg-gray-100/70 dark:hover:bg-gray-700/10
          flex relative flex-col items-start justify-between p-0
           rounded-lg drop-shadow-2xl transition-all `)}
     >
