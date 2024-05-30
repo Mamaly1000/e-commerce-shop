@@ -6,4 +6,8 @@ html,
 body,
 :root {
   height: 100%;
+  position: relative;
+}
+body {
+  @apply overflow-y-auto overflow-x-hidden h-fit;
 }
