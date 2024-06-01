@@ -27,10 +27,6 @@ const routes = [
     href: "/about",
     label: "about us",
   },
-  {
-    href: "/contact",
-    label: "contact",
-  },
 ];
 
 export const SlideTabsExample = () => {
@@ -68,7 +64,7 @@ export const SlideTabsExample = () => {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-600 rounded-md bg-white dark:bg-[#121212] shadow-lg ring-1 ring-black/5 focus:outline-none">
-              <div className="px-1 py-1 ">
+              <div className="px-1 py-1 space-y-1">
                 {formattedRoutes.map((route) => (
                   <Menu.Item key={route.href}>
                     {() => (
@@ -77,7 +73,7 @@ export const SlideTabsExample = () => {
                           route.isActive
                             ? "bg-[#121212] dark:bg-white text-white dark:text-black"
                             : "text-gray-900 dark:text-white"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                        } group flex hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
                         onClick={() => router.push(route.href)}
                       >
                         {route.label}

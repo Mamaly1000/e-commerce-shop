@@ -6,15 +6,31 @@ import NoResults from "../ui/NoResults";
 import CartItem from "../cards/CartItem";
 import Summary from "../ui/Summary";
 import { useParams } from "next/navigation";
+import { store_with_analytic } from "@/types/Types";
+import { useStore } from "@/hooks/use-store";
+import { Category } from "../../types/Types";
 
-const CartClient = () => {
+const CartClient = ({
+  store,
+  categories = [],
+}: {
+  categories?: Category[];
+  store?: store_with_analytic | null;
+}) => {
   const [mounted, setMounted] = useState(false);
   const cart = useCart();
   const params = useParams();
+  const { setStore, store: internalStore } = useStore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (store) {
+      setStore({ ...store, categories });
+    }
+  }, [store]);
 
   if (!mounted) {
     return null;

@@ -37,9 +37,14 @@ const CategoryPage = async ({
     id: params.categoryId,
   });
   return (
-    <section className="bg-white dark:bg-[#121212]">
-      <Container categories={categories} store={store as any}>
+    <section className="bg-white dark:bg-[#121212] ">
+      <Container
+        className="flex items-start justify-start gap-10 flex-col mt-10"
+        categories={categories}
+        store={store as any}
+      >
         <Billboard billboards={[category.billboard]} />
+        <hr className="max-w-full mx-auto border-gray-700 border-[1px]" />
         <div className="px-4 sm:px-6 lg:px-8 pb-24 ">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters sizes={sizes} colors={colors} />

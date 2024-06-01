@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes"; 
+import { useTheme } from "next-themes";
 import { Menu, Transition } from "@headlessui/react";
 
 export function ModeToggle() {
@@ -28,14 +28,14 @@ export function ModeToggle() {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-600 rounded-md bg-white dark:bg-[#121212] shadow-lg ring-1 ring-black/5 focus:outline-none">
-          <div className="px-1 py-1 ">
+          <div className="px-1 py-1 space-y-1">
             <Menu.Item>
               <button
                 className={`${
                   resolvedTheme === "dark"
                     ? "bg-[#121212] dark:bg-white text-white dark:text-black"
                     : "text-gray-900 dark:text-white"
-                } group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                } group flex w-full items-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-md px-2 py-2 text-sm capitalize`}
                 onClick={() => setTheme("dark")}
               >
                 dark
@@ -47,7 +47,7 @@ export function ModeToggle() {
                   resolvedTheme === "light"
                     ? "bg-[#121212] dark:bg-white text-white dark:text-black"
                     : "text-gray-900 dark:text-white"
-                } group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                } group flex w-full items-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-md px-2 py-2 text-sm capitalize`}
                 onClick={() => setTheme("light")}
               >
                 light
@@ -59,7 +59,7 @@ export function ModeToggle() {
                   resolvedTheme === "system"
                     ? "bg-[#121212] dark:bg-white text-white dark:text-black"
                     : "text-gray-900 dark:text-white"
-                } group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                } group flex w-full items-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-md px-2 py-2 text-sm capitalize`}
                 onClick={() => setTheme("system")}
               >
                 system

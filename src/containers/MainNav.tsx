@@ -16,7 +16,7 @@ const MainNav: FC<props> = ({ data = [] }) => {
   const routes = data.map((route) => ({
     href: `/store/${params?.storeId}/category/${route.id}`,
     label: route.name,
-    active: pathname === `/category/${route.id}`,
+    active: pathname.endsWith(`/category/${route.id}`),
   }));
 
   return (

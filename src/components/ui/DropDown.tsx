@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/libs/utils";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -36,16 +37,18 @@ const DropDown = ({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute left-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-600 rounded-md bg-white dark:bg-[#121212] shadow-lg ring-1 ring-black/5 focus:outline-none">
-          <div className="px-1 py-1 ">
+          <div className="px-1 py-1 space-y-1">
             {routes.map((route) => (
               <Menu.Item key={route.href}>
                 {() => (
                   <button
-                    className={`${
+                    className={cn(`${
                       route.active
                         ? "bg-[#121212] dark:bg-white text-white dark:text-black"
                         : "text-gray-900 dark:text-white"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                    } group hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all
+                     flex w-full items-center
+                     rounded-md px-2 py-2 text-sm capitalize`)}
                     onClick={() => router.push(route.href)}
                   >
                     {route.label}

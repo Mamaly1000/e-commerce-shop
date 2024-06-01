@@ -31,7 +31,7 @@ export default function Navbar() {
               />
               <p className="font-bold text-xl">{store?.name}</p>
             </Link>
-            <MainNav data={(store?.categories || []) as any} /> 
+            <MainNav data={(store?.categories || []) as any} />
             <NavbarActions />
           </div>
         </Container>
