@@ -118,7 +118,7 @@ const HeroSection = ({ stores = [] }: { stores?: store_with_analytic[] }) => {
             </div>
           </div>
           <div className="flex items-center justify-center gap-1 text-gray-600 dark:text-gray-300 capitalize">
-            products sells:
+            products sales:
             <div className=" flex items-center justify-start gap-1 font-semibold text-black dark:text-white">
               <Box className="w-4 h-4" />
               {stores.map(

@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 import NoResults from "../ui/NoResults";
 import CartItem from "../cards/CartItem";
 import Summary from "../ui/Summary";
+import { useParams } from "next/navigation";
 
 const CartClient = () => {
   const [mounted, setMounted] = useState(false);
   const cart = useCart();
+  const params = useParams();
 
   useEffect(() => {
     setMounted(true);
@@ -27,20 +29,23 @@ const CartClient = () => {
           </h1>
           <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
             <div className="lg:col-span-7">
-              {cart.items.length === 0 && (
+              {cart.items.filter((item) => item.storeId === params?.storeId)
+                .length === 0 && (
                 <NoResults
                   title="cart is empty"
                   description="no ites added to cart."
                 />
               )}
               <ul>
-                {cart.items.map((item) => (
-                  <CartItem
-                    onRemove={(id) => cart.removeItem(id)}
-                    key={item.id}
-                    data={item}
-                  />
-                ))}
+                {cart.items
+                  .filter((item) => item.storeId === params?.storeId)
+                  .map((item) => (
+                    <CartItem
+                      onRemove={(id) => cart.removeItem(id)}
+                      key={item.id}
+                      data={item}
+                    />
+                  ))}
               </ul>
             </div>
             <Summary />

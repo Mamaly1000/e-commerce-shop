@@ -15,18 +15,25 @@ const Summary = () => {
   const router = useRouter();
   const params = useParams();
   const removeAll = cart.removeAll;
-  const totalPrice = cart.items.reduce((acc, current) => {
-    return (acc += Number(current.price));
-  }, 0);
+  const totalPrice = cart.items
+    .filter((item) => item.storeId === params?.storeId)
+    .reduce((acc, current) => {
+      return (acc += Number(current.price));
+    }, 0);
   const { onOpen } = useCheckout();
   const onCheckout = async () => {
     try {
+      if (!params?.storeId) {
+        throw new Error("store id is not valid");
+      }
       setLoading(true);
       await axios
         .post(
           `${process.env.NEXT_PUBLIC_API_URL}/${params?.storeId}/checkout`,
           {
-            productIds: cart.items.map((i) => i.id),
+            productIds: cart.items
+              .filter((i) => i.storeId === params?.storeId)
+              .map((i) => i.id),
             status: "PENDING",
           }
         )
@@ -67,7 +74,11 @@ const Summary = () => {
         </div>
       </div>
       <Button
-        disabled={isLoading || cart.items.length === 0}
+        disabled={
+          isLoading ||
+          cart.items.filter((item) => item.storeId === params?.storeId)
+            .length === 0
+        }
         onClick={onCheckout}
         className="w-full mt-6 bg-black dark:bg-white text-white dark:text-black"
       >

@@ -27,8 +27,10 @@ const NavbarActions = () => {
         onClick={() => router.push(`/store/${params?.storeId}/cart`)}
         className="flex items-center rounded-full bg-opacity-100 dark:bg-opacity-90 bg-[#121212] text-white dark:bg-white dark:text-black px-4 py-2 "
       >
-        <ShoppingBag size={20} /> 
-        <span className="text-sm font-medium ml-2">{cart.items.length}</span>
+        <ShoppingBag size={20} />
+        <span className="text-sm font-medium ml-2">
+          {cart.items.filter((item) => item.storeId === params?.storeId).length}
+        </span>
       </Button>
     </section>
   );

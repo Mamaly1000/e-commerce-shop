@@ -35,9 +35,11 @@ const CheckoutForm = () => {
   const [isLoading, setLoading] = useState(false);
 
   const cart = useCart();
-  const totalPrice = cart.items.reduce((acc, current) => {
-    return (acc += Number(current.price));
-  }, 0);
+  const totalPrice = cart.items
+    .filter((item) => item.storeId === params?.storeId)
+    .reduce((acc, current) => {
+      return (acc += Number(current.price));
+    }, 0);
 
   const { isOpen, onClose, orderId } = useCheckout();
 
@@ -125,7 +127,10 @@ const CheckoutForm = () => {
             <span className="font-semibold flex items-center gap-1 whitespace-nowrap">
               <List size={13} /> Shipping Information :
             </span>
-            {cart.items.map((item) => item.name).join(" ,")}
+            {cart.items
+              .filter((item) => item.storeId === params?.storeId)
+              .map((item) => item.name)
+              .join(" ,")}
           </div>
         </div>
         <Input

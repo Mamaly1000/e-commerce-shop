@@ -37,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
         {formatPrice && (
           <DollarSign
             size={24}
-            className="text-gray-500 absolute top-5 start-2"
+            className="text-gray-500 dark:text-gray-200 absolute top-5 start-2"
           />
         )}
         <input
@@ -46,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
           {...register(id)}
           placeholder=" "
           className={twMerge(
-            " peer w-full bg-white dark:bg-[#121212] text-black p-4 pt-6 font-light border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ",
+            " peer w-full bg-white dark:bg-[#121212] text-gray-500 dark:text-gray-200  p-4 pt-6 font-light border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ",
             formatPrice ? "pl-9" : "pl-4",
             errors[id]
               ? "border-gray-500 dark:border-gray-700500 focus:border-gray-500 dark:border-gray-700500"
@@ -65,13 +65,13 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
             peer-focus:scale-75
             peer-focus:-translate-y-4`,
             formatPrice ? "left-9" : "left-4",
-            errors[id] ? "text-gray-500" : "text-zinc-500"
+            errors[id] ? "text-gray-500 dark:text-gray-200 " : "text-zinc-500 dark:text-zinc-200 "
           )}
         >
           {label}
         </label>
         {errors && errors[id] && (
-          <p className="text-[12px] text-red-500 min-w-full max-w-full">
+          <p className="text-[12px] text-red-500 dark:text-red-300 min-w-full max-w-full">
             {errors![id]?.message?.toString() as string}
           </p>
         )}
