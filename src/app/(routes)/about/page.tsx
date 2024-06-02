@@ -84,7 +84,7 @@ const AboutPage = () => {
           </li>
           <li>
             Explore Categories: Browse through our categories to discover new
-            products and find exactly what you're looking for.
+            products and find exactly what you are looking for.
           </li>
           <li>
             Check for Deals: Keep an eye out for special promotions and
