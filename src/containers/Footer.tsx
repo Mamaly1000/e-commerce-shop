@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-[#121212] border-t border-gray-500 dark:border-gray-700">
       <div className="mx-auto py-10">
-        <p className={cn("text-center  ")}>
+        <p className={cn("text-center  text-black dark:text-white")}>
           &copy; {date.getFullYear()}
           <span
             className={cn(
