@@ -4,14 +4,16 @@ import React from "react";
 import not_found_layout from "../../../public/images/not-found-layout.svg";
 import not_found_content from "../../../public/images/not-found-content.svg";
 import Link from "next/link";
-const Page = () => {
+const NotFound = () => {
   return (
     <Container className="w-full my-0 min-h-[500px] flex flex-wrap items-center justify-between  relative gap-10 lg:gap-0 py-10 lg:py-0">
       <div className="w-full lg:w-[50%] relative z-20 flex flex-col items-start justify-start gap-3 p-5 min-h-fit lg:min-h-[500px]">
         <h1 className=" text-7xl lg:text-9xl font-extrabold font-mono">
           OOPS ..
         </h1>
-        <p className="text-2xl lg:text-3xl font-semibold text-left">Page not found</p>
+        <p className="text-2xl lg:text-3xl font-semibold text-left">
+          Page not found
+        </p>
         <p className="mt-5 text-lg lg:text-2xl text-gray-500 dark:text-gray-300 max-w-[70%] ">
           The page you are looking for doesn’t exist or any other error
           occurred, go back to home page.
@@ -51,4 +53,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default NotFound;
