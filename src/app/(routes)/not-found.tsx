@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import not_found_layout from "../../../public/images/not-found-layout.svg";
 import not_found_content from "../../../public/images/not-found-content.svg";
-import Link from "next/link";
+import Link from "next/link"; 
 const NotFound = () => {
   return (
     <Container className="w-full my-0 min-h-[500px] flex flex-wrap items-center justify-between  relative gap-10 lg:gap-0 py-10 lg:py-0">
