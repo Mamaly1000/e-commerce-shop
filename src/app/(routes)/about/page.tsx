@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 import logo from "../../../../public/images/Preview.png";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 
 const AboutPage = () => {
   return (
@@ -94,7 +93,7 @@ const AboutPage = () => {
       </section>
       <section className="w-full flex flex-col items-start justify-start gap-5">
         <p className="text-neutral-900 dark:text-neutral-200">
-          Experience the future of online shopping with{" "}
+          Experience the future of online shopping with
           <span className="text-green-500 font-bold">ShopSpot</span>. Happy
           Shopping!
         </p>
