@@ -1,8 +1,8 @@
 import Container from "@/containers/Container";
 import Image from "next/image";
 import React from "react";
-import not_found_layout from "./../../public/images/not-found-layout.svg";
-import not_found_content from "../../public/images/not-found-content.svg";
+import not_found_layout from "../../../public/images/not-found-layout.svg";
+import not_found_content from "../../../public/images/not-found-content.svg";
 import Link from "next/link";
 const Page = () => {
   return (
